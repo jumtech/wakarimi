@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/parcel ./public/index.html"
+    "watch": "./node_modules/.bin/parcel ./public/index.html",
+    "build": "rm dist/* && ./node_modules/.bin/parcel build ./public/index.html --public-url ./",
+    "deploy": "firebase deploy"
   },
   "repository": {
     "type": "git",
