@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <router-link class="home" to="/c">
-        <img class="home_icon" src="../../../image/icon/home.png" alt="home">
+      <img class="home_icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/home.png" alt="home">
     </router-link>
     <div class="title cmn_center_content">
       <p>

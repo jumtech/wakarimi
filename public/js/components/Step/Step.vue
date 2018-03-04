@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <div class="media"></div>
+    <div class="media">
+      <img :src="image_url" alt="image">
+    </div>
     <div class="description">
       {{description}}
     </div>
@@ -35,14 +37,21 @@ export default {
     stepId() {
       return this.$route.params.stepId;
     },
+    step() {
+      return CONTENT[this.contentId].steps[this.stepId];
+    },
     currentPage() {
       return this.$route.params.page || 1;
     },
+    image_url() {
+      let url = '';
+      if (this.step.pages[this.currentPage - 1].image) {
+        url = `https://s3-ap-northeast-1.amazonaws.com/wakarimi/content/${this.contentId}/step/${this.stepId}/${this.step.pages[this.currentPage - 1].image}`;
+      }
+      return url;
+    },
     description() {
       return this.step.pages[this.currentPage - 1].text;
-    },
-    step() {
-      return CONTENT[this.contentId].steps[this.stepId];
     },
   },
   methods: {

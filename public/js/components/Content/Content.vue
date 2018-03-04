@@ -1,25 +1,25 @@
 <template>
   <div class="container">
     <div class="thumbnail">
-      <img class="wide_image" src="../../../image/content/001/thumbnail.png" alt="thumbnail">
+      <img class="wide_image" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/content/001/thumbnail.png" alt="thumbnail">
     </div>
     <div class="description">
       <p>こんな問題が解けるようになります。</p>
       <ul class="list">
-        <img class="list_item_image" src="../../../image/content/001/car.png" alt="car">
+        <img class="list_item_image" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/content/001/car.png" alt="car">
         <li class="list_item">車が動くやつ</li>
-        <img class="list_item_image" src="../../../image/content/001/ball.png" alt="ball">
+        <img class="list_item_image" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/content/001/ball.png" alt="ball">
         <li class="list_item">小球を落とす(投げる)やつ</li>
         <li class="list_item">速度vや時間tを求めさせるやつ</li>
         <li class="list_item">「加速度」って書いてあるやつ</li>
       </ul>
     </div>
     <div class="cmn_center_content">
-      <img class="arrow_icon" src="../../../image/icon/arrow.png" alt="arrow">
+      <img class="arrow_icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/arrow.png" alt="arrow">
     </div>
     <p class="heading"><span class="cmn_underline">3つのテクニック</span>で解けるように！</p>
-    <LinkItem class="link_item" v-for="(step, i) in content.steps" :key="i"
-      :num="i+1"
+    <LinkItem class="link_item" v-for="(step, key) in content.steps" :key="step.id"
+      :num="key"
       :title="step.title"
       :contentId="contentId"
       :stepId="step.id" />

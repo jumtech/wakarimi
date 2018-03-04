@@ -1,9 +1,9 @@
-import step_001 from './step/001';
+import step_1 from './step/1';
 
 export default {
   steps: {
-    '001': step_001,
-    '002': {title: '正しい図が描ける！', id: '002'},
-    '003': {title: '公式を正しく使える！', id: '003'},
+    '1': step_1,
+    '2': {title: '正しい図が描ける！', id: '2'},
+    '3': {title: '公式を正しく使える！', id: '3'},
   }
 }
