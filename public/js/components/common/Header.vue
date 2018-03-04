@@ -3,7 +3,7 @@
     <div class="home">
       <img class="home_icon" src="../../../image/icon/home.png" alt="home">
     </div>
-    <div class="title">
+    <div class="title cmn_center_content">
       <p>
         {{title}}
       </p>
@@ -37,10 +37,7 @@ export default {
   height: 100%;
 }
 .title {
-  display: flex;
   margin: 0 0 0 16px;
   font-size: 24px;
-  align-items: center;
-  justify-content: center;
 }
 </style>
