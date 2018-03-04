@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="thumbnail">
-      <img class="wide_image" src="../../../image/001_ua_motion/thumbnail.png" alt="thumbnail">
+      <img class="wide_image" src="../../../image/content/001/thumbnail.png" alt="thumbnail">
     </div>
     <div class="description">
       <p>こんな問題が解けるようになります。</p>
       <ul class="list">
-        <img class="list_item_image" src="../../../image/001_ua_motion/car.png" alt="car">
+        <img class="list_item_image" src="../../../image/content/001/car.png" alt="car">
         <li class="list_item">車が動くやつ</li>
-        <img class="list_item_image" src="../../../image/001_ua_motion/ball.png" alt="ball">
+        <img class="list_item_image" src="../../../image/content/001/ball.png" alt="ball">
         <li class="list_item">小球を落とす(投げる)やつ</li>
         <li class="list_item">速度vや時間tを求めさせるやつ</li>
         <li class="list_item">「加速度」って書いてあるやつ</li>
