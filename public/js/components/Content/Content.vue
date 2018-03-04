@@ -18,10 +18,11 @@
       <img class="arrow_icon" src="../../../image/icon/arrow.png" alt="arrow">
     </div>
     <p class="heading"><span class="cmn_underline">3つのテクニック</span>で解けるように！</p>
-    <LinkItem class="link_item" v-for="(link, i) in links" :key="i"
+    <LinkItem class="link_item" v-for="(step, i) in steps" :key="i"
       :num="i+1"
-      :title="link.title"
-      :path="link.path" />
+      :title="step.title"
+      :content_id="content_id"
+      :step_id="step.id" />
   </div>
 </template>
 
@@ -33,12 +34,17 @@ export default {
   },
   data() {
     return {
-      links: [
-        {title: '「v」とか「t」を覚える！', path: '/foo',},
-        {title: '正しい図が描ける！', path: '/bar',},
-        {title: '公式を正しく使える！', path: '/buzz',},
+      steps: [
+        {title: '「v」とか「t」を覚える！', id: '001'},
+        {title: '正しい図が描ける！', id: '002'},
+        {title: '公式を正しく使える！', id: '003'},
       ]
     }
+  },
+  computed: {
+    content_id() {
+      return this.$route.params.content_id;
+    },
   },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <router-link class="container" :to='path'>
     <div class="num_wrapper cmn_center_content">
       <div class="num_circle cmn_center_content">
         <p class="num">{{num}}</p>
@@ -11,16 +11,21 @@
     <div class="arrow">
       <div class="right-arrow"></div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
-  props: ['num', 'title', 'path',],
+  props: ['num', 'title', 'content_id', 'step_id'],
   data() {
     return {
     }
   },
+  computed: {
+    path() {
+      return `/c/${this.content_id}/s/${this.step_id}/p/1`;
+    },
+  }
 }
 </script>
 
