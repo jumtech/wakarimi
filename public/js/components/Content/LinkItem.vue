@@ -16,14 +16,14 @@
 
 <script>
 export default {
-  props: ['num', 'title', 'content_id', 'step_id'],
+  props: ['num', 'title', 'contentId', 'stepId'],
   data() {
     return {
     }
   },
   computed: {
     path() {
-      return `/c/${this.content_id}/s/${this.step_id}/p/1`;
+      return `/c/${this.contentId}/s/${this.stepId}/p/1`;
     },
   }
 }

@@ -21,8 +21,8 @@
     <LinkItem class="link_item" v-for="(step, i) in steps" :key="i"
       :num="i+1"
       :title="step.title"
-      :content_id="content_id"
-      :step_id="step.id" />
+      :contentId="contentId"
+      :stepId="step.id" />
   </div>
 </template>
 
@@ -42,8 +42,8 @@ export default {
     }
   },
   computed: {
-    content_id() {
-      return this.$route.params.content_id;
+    contentId() {
+      return this.$route.params.contentId;
     },
   },
 }
