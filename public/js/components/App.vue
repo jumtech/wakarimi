@@ -1,9 +1,16 @@
 <template>
-  <p>{{foo}}</p>
+  <div id="app">
+    <Header></Header>
+    <p>{{foo}}</p>
+  </div>
 </template>
 
 <script>
+import Header from './Header/Header.vue';
 export default {
+  components: {
+    Header,
+  },
   data() {
     return {
       foo: 'buzz',
