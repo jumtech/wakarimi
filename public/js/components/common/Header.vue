@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="home">
-      <img class="home_icon" src="../../../image/icon/home.png" alt="home">
-    </div>
+    <router-link class="home" to="/c">
+        <img class="home_icon" src="../../../image/icon/home.png" alt="home">
+    </router-link>
     <div class="title cmn_center_content">
       <p>
         {{title}}
