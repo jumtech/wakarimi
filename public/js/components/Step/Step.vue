@@ -21,14 +21,11 @@
 </template>
 
 <script>
+import CONTENT from '../../data/content';
+console.log(CONTENT);
 export default {
   data() {
     return {
-      pages: [
-        { text: "まずはよく使う「5つの文字」を覚えましょう。" },
-        { text: "「a」「v0」とかが何なのか。これがわからないと、テストの時に「そもそも問題文の意味がわからん！」となります。" },
-        { text: "ではまずは、簡単な3つの文字から。" },
-      ]
     }
   },
   computed: {
@@ -42,7 +39,10 @@ export default {
       return this.$route.params.page || 1;
     },
     description() {
-      return this.pages[this.currentPage - 1].text;
+      return this.step.pages[this.currentPage - 1].text;
+    },
+    step() {
+      return CONTENT[this.contentId].steps[this.stepId];
     },
   },
   methods: {
@@ -53,7 +53,7 @@ export default {
     },
     next() {
       let p = Number(this.currentPage) + 1;
-      if (p > this.pages.length) p = this.pages.length;
+      if (p > this.step.pages.length) p = this.step.pages.length;
       this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`)
     },
   },

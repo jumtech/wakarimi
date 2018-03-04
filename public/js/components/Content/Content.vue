@@ -18,7 +18,7 @@
       <img class="arrow_icon" src="../../../image/icon/arrow.png" alt="arrow">
     </div>
     <p class="heading"><span class="cmn_underline">3つのテクニック</span>で解けるように！</p>
-    <LinkItem class="link_item" v-for="(step, i) in steps" :key="i"
+    <LinkItem class="link_item" v-for="(step, i) in content.steps" :key="i"
       :num="i+1"
       :title="step.title"
       :contentId="contentId"
@@ -28,22 +28,21 @@
 
 <script>
 import LinkItem from './LinkItem.vue';
+import CONTENT from '../../data/content';
 export default {
   components: {
     LinkItem,
   },
   data() {
     return {
-      steps: [
-        {title: '「v」とか「t」を覚える！', id: '001'},
-        {title: '正しい図が描ける！', id: '002'},
-        {title: '公式を正しく使える！', id: '003'},
-      ]
     }
   },
   computed: {
     contentId() {
       return this.$route.params.contentId;
+    },
+    content() {
+      return CONTENT[this.contentId];
     },
   },
 }
