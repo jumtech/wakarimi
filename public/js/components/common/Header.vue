@@ -29,8 +29,8 @@ export default {
   padding: 4px 4px 4px 4px;
 }
 .home {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
 }
 .home_icon {
   width: 100%;
