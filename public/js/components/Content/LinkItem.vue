@@ -8,7 +8,7 @@
     <div class="title cmn_center_content">
       <p>{{title}}</p>
     </div>
-    <div class="arrow">
+    <div class="arrow_wrapper">
       <div class="right-arrow"></div>
     </div>
   </router-link>
@@ -45,8 +45,12 @@ export default {
   font-size: 24px;
 }
 .title {
+  width: calc(100% - 64px);
   margin-left: 8px;
   font-size: 24px;
+}
+.arrow_wrapper {
+  width: 64px;
 }
 .right-arrow {
   position: relative;
