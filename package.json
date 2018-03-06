@@ -28,6 +28,7 @@
     "vue-template-compiler": "2.5.13"
   },
   "dependencies": {
+    "phina.js": "0.2.3",
     "vue": "2.5.13",
     "vue-router": "3.0.1"
   }
