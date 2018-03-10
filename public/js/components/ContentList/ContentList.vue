@@ -7,7 +7,7 @@
         </router-link>
       </li>
     </ul>
-    <Game htmlPath="dist/SampleGame.html" />
+    <Game htmlPath="./01.html" />
   </div>
 </template>
 

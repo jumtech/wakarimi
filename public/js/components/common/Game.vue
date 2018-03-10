@@ -1,13 +1,16 @@
 <template>
-  <iframe id="game" :src="htmlPath" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="border:none;" onload="this.contentWindow.focus();"></iframe>
+  <div id="game_container">
+    <iframe id="game" :src="htmlPath" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="border:none;" onload="this.contentWindow.focus();"></iframe>
+  </div>
 </template>
 
 <script>
+import p5 from 'p5';
 export default {
   props: ['htmlPath'],
-  data() {
-    return {}
-  },
+  created() {
+    console.log("p5:",p5)
+  }
 }
 </script>
 
