@@ -14,7 +14,7 @@
     - `cd wakarimi`
     - `npm install`
 - watchとbulid
-    - `npm run build`
+    - `npm run watch`
     - http://localhost:1234/ をブラウザで開く
     - これで、JavaScriptを編集すると自動でbulidされ、ブラウザ更新すると変更が反映される
 
