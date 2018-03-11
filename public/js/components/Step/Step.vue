@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="media">
-      <img :src="image_url" alt="image">
+    <div class="media cmn_center_content">
+      <img class="image" :src="image_url" alt="image">
     </div>
     <div class="description">
       {{description}}
@@ -24,7 +24,6 @@
 
 <script>
 import CONTENT from '../../data/content';
-console.log(CONTENT);
 export default {
   data() {
     return {
@@ -73,26 +72,31 @@ export default {
 
 <style scoped>
 .container {
-  padding: 8px 8px 8px 8px;
+  width: 100vw;
   height: calc(100vh - 48px);
 }
 .media {
-  height: calc((100vh - 48px - 80px - 24px) * 0.6);
+  height: calc((100vh - 48px) * 0.4);
+}
+.image {
+  max-width: 100%;
+  max-height: 100%;
 }
 .description {
-  height: calc((100vh - 48px - 80px - 24px) * 0.4);
+  height: calc((100vh - 48px) * 0.6);
   background-color: #E2F0D9;
-  padding: 8px 8px 8px 8px;
   font-size: 20px;
   line-height: 32px;
+  padding: 8px 8px 8px 8px;
 }
 .footer {
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: calc(100% - 16px);
-  height: 80px;
-  margin-bottom: 8px;
+  width: 100vw;
+  height: 88px;
+  padding: 4px 4px 4px 4px;
+  background-color: #FFFFFF;
 }
 .previous {
   width: 20%;
