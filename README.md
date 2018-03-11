@@ -1,10 +1,11 @@
 # wakarimi
 ## 方針
 - 非エンジニアでも使えるよう、なるべく簡易な構成にする
-- 使うもの
-    - npm
-    - parcel
-    - vue.js
+    - 主な使用ライブラリ
+        - npm
+        - parcel
+        - vue.js
+        - p5.js
 
 ## 開発環境の準備
 - リポジトリをダウンロード
@@ -13,10 +14,15 @@
 - 必要なライブラリをインストール
     - `cd wakarimi`
     - `npm install`
-- watchとbulid
-    - `npm run build`
+- ローカル開発環境で動作確認
+    - `npm run watch`
+        - JavaScriptを編集すると自動でbulidされる
     - http://localhost:1234/ をブラウザで開く
-    - これで、JavaScriptを編集すると自動でbulidされ、ブラウザ更新すると変更が反映される
+        - ブラウザ更新すると、buildの変更が反映される
 
 ## デプロイ
-- あとで書く
+- production build
+    - `npm run build`
+- deploy
+    - `npm run deploy`
+        - Firebase Hostingにデプロイされる
