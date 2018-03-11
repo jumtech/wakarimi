@@ -1,15 +1,15 @@
 <template>
-  <div id="game_container">
-    <iframe id="game" :src="htmlPath" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" style="border:none;" onload="this.contentWindow.focus();"></iframe>
-  </div>
+  <div id="game"></div>
 </template>
 
 <script>
 import p5 from 'p5';
+import games from '../games';
 export default {
-  props: ['htmlPath'],
+  props: ['gameName'],
   created() {
     console.log("p5:",p5)
+    const sample = new p5(games[this.gameName], 'game');
   }
 }
 </script>

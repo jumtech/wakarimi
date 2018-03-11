@@ -7,8 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "./node_modules/.bin/parcel ./public/index.html",
     "build": "rm dist/* && ./node_modules/.bin/parcel build ./public/index.html --public-url ./ && npm run build_game",
-    "watch_game": "./node_modules/.bin/parcel ./public/game/01_learn_unit/01.html",
-    "build_game": "./node_modules/.bin/parcel build ./public/game/01_learn_unit/01.html --public-url ./",
     "deploy": "firebase deploy"
   },
   "repository": {

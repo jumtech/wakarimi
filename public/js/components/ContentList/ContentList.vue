@@ -7,7 +7,7 @@
         </router-link>
       </li>
     </ul>
-    <Game htmlPath="./01.html" />
+    <Game gameName="learn_unit" />
   </div>
 </template>
 
