@@ -25,4 +25,5 @@
     - `npm run build`
 - deploy
     - `npm run deploy`
-        - Firebase Hostingにデプロイされる
+        - Firebase Hostingされた環境にデプロイされる
+            - https://wakarimi-43eeb.firebaseapp.com
