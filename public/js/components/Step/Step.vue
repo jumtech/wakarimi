@@ -7,15 +7,24 @@
       {{description}}
     </div>
     <div class="footer">
-      <div class="previous" @click="previous">
-        <div class="previous_icon cmn_center_content">
-          <div class="arrow left"></div>
+      <div class="question">
+        <img class="question_icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/girl.png" alt="girl">
+        <div class="question_content">
+          <p class="question_title">単位の「s」って何？</p>
+          <div class="question_dots">・ ・ ・ ・ ・ ・ ・ ・</div>
         </div>
       </div>
-      <div class="next" @click="next">
-        <div class="next_text cmn_center_content">Next</div>
-        <div class="next_icon cmn_center_content">
-          <div class="arrow right"></div>
+      <div class="buttons">
+        <div class="previous" @click="previous">
+          <div class="previous_icon cmn_center_content">
+            <div class="arrow left"></div>
+          </div>
+        </div>
+        <div class="next" @click="next">
+          <div class="next_text cmn_center_content">Next</div>
+          <div class="next_icon cmn_center_content">
+            <div class="arrow right"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -90,8 +99,41 @@ export default {
   padding: 8px 8px 8px 8px;
 }
 .footer {
-  display: flex;
   position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+.question {
+  display: flex;
+  margin: 12px 12px 12px 12px;
+  padding: 4px 4px 4px 4px;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+.question:before {
+  content: "";
+  position: absolute;
+  top: 56px;
+  left: calc(100% - 16px);
+  border: 8px solid transparent;
+  border-left: 8px solid #FFFFFF;
+  border-bottom: 8px solid #FFFFFF;
+}
+.question_icon {
+  height: 64px;
+}
+.question_content {
+  margin: 12px 12px 12px 12px;
+}
+.question_title {
+  margin: 0 0 8px 0;
+  text-decoration: underline;
+}
+.question_dots {
+  /**/
+}
+.buttons {
+  display: flex;
   bottom: 0;
   width: 100vw;
   height: 88px;
