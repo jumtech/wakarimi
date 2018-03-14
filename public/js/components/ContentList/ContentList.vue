@@ -7,16 +7,12 @@
         </router-link>
       </li>
     </ul>
-    <Game gameName="learn_unit" />
   </div>
 </template>
 
 <script>
-import Game from '../common/Game.vue';
 export default {
-  components: {
-    Game,
-  },
+  components: {},
   data() {
     return {
     }
