@@ -7,10 +7,14 @@
       {{description}}
     </div>
     <div class="footer">
-      <div class="question">
+      <div class="question" :class="{expanded: expanded}" @click="toggleExpanded">
         <img class="question_icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/girl.png" alt="girl">
         <div class="question_content">
-          <p class="question_title">単位の「s」って何？</p>
+          <p class="question_title">なんで2のつぎが13なの？</p>
+          <ul v-if="expanded">
+            <li>3〜12はあんまテストに出ないので、飛ばしてしまいます。</li>
+            <li>テストが始まったら、問題を解く前に余白に上の表をメモしておきましょう。その後の問題が解きやすくなります！</li>
+          </ul>
           <div class="question_dots">・ ・ ・ ・ ・ ・ ・ ・</div>
         </div>
       </div>
@@ -36,6 +40,7 @@ import CONTENT from '../../data/content';
 export default {
   data() {
     return {
+      expanded: false,
     }
   },
   computed: {
@@ -73,6 +78,9 @@ export default {
       if (p > this.step.pages.length) p = this.step.pages.length;
       this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`)
     },
+    toggleExpanded() {
+      this.expanded = !this.expanded;
+    }
   },
   created() {
   },
@@ -105,19 +113,26 @@ export default {
 }
 .question {
   display: flex;
+  height: 72px;
+  transition: height .5s;
   margin: 12px 12px 12px 12px;
   padding: 4px 4px 4px 4px;
   background-color: #FFFFFF;
   border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
 }
 .question:before {
   content: "";
   position: absolute;
-  top: 56px;
+  bottom: 112px;
   left: calc(100% - 16px);
   border: 8px solid transparent;
   border-left: 8px solid #FFFFFF;
   border-bottom: 8px solid #FFFFFF;
+}
+.question.expanded {
+  height: 200px;
 }
 .question_icon {
   height: 64px;
