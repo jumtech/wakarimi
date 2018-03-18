@@ -1,14 +1,16 @@
 <template>
   <div class="container" :class="{expanded: expanded}" @click="toggleExpanded">
-    <img class="icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/girl.png" alt="girl">
-    <div class="content">
-      <p class="title">なんで2のつぎが13なの？</p>
-      <ul v-if="expanded">
-        <li>3〜12はあんまテストに出ないので、飛ばしてしまいます。</li>
-        <li>テストが始まったら、問題を解く前に余白に上の表をメモしておきましょう。その後の問題が解きやすくなります！</li>
-      </ul>
-      <div class="dots">・ ・ ・ ・ ・ ・ ・ ・</div>
+    <div class="min">
+      <img class="icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/girl.png" alt="student">
+      <div class="min_content">
+        <p class="title">なんで2のつぎが13なの？</p>
+        <div class="dots">・ ・ ・ ・ ・ ・ ・ ・</div>
+      </div>
     </div>
+    <ul class="expansion" v-if="expanded">
+      <li>3〜12はあんまテストに出ないので、飛ばしてしまいます。</li>
+      <li>テストが始まったら、問題を解く前に余白に上の表をメモしておきましょう。その後の問題が解きやすくなります！</li>
+    </ul>
   </div>
 </template>
 
@@ -31,7 +33,6 @@ export default {
 
 <style scoped>
 .container {
-  display: flex;
   height: 72px;
   transition: height .5s;
   padding: 4px 4px 4px 4px;
@@ -50,12 +51,15 @@ export default {
   border-bottom: 8px solid #FFFFFF;
 }
 .container.expanded {
-  height: 200px;
+  height: 240px;
+}
+.min {
+  display: flex;
 }
 .icon {
   height: 64px;
 }
-.content {
+.min_content {
   margin: 12px 12px 12px 12px;
 }
 .title {
@@ -63,6 +67,13 @@ export default {
   text-decoration: underline;
 }
 .dots {
-  /**/
+  text-align: center;
+}
+.expansion li{
+  list-style-position: inside;
+  padding-left: 1em;
+  text-indent: -1em;
+  line-height: 24px;
+  margin: 8px 16px 0 16px;
 }
 </style>
