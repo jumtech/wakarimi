@@ -29,8 +29,8 @@
             <div class="arrow left"></div>
           </div>
         </div>
-        <div class="next" @click="next">
-          <div class="next_text cmn_center_content">Next</div>
+        <div class="next" :class="{'disable': !isCorrect}" @click="next">
+          <div class="next_text cmn_center_content">{{isLastPage ? 'Finish!' : 'Next'}}</div>
           <div class="next_icon cmn_center_content">
             <div class="arrow right"></div>
           </div>
@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      selectedChoice: '',
+      selectedChoice: null,
     }
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
       return CONTENT[this.contentId].steps[this.stepId];
     },
     currentPageId() {
-      return this.$route.params.page || 1;
+      return Number(this.$route.params.page) || 1;
     },
     currentPage() {
       const page = this.currentStep.pages[this.currentPageId - 1];
@@ -71,20 +71,34 @@ export default {
         page.image_url = `https://s3-ap-northeast-1.amazonaws.com/wakarimi/content/${this.contentId}/step/${this.stepId}/${page.image}`
       return page;
     },
+    isCorrect() {
+      if (this.currentPage.answer === undefined)
+        return true;
+      return this.selectedChoice === this.currentPage.answer;
+    },
+    isLastPage() {
+      return this.currentPageId === this.currentStep.pages.length;
+    }
   },
   methods: {
     previous() {
-      let p = Number(this.currentPageId) - 1;
+      this.selectedChoice = null;
+      let p = this.currentPageId - 1;
       if (p < 1) p = 1;
       this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`)
     },
     next() {
-      let p = Number(this.currentPageId) + 1;
-      if (p > this.currentStep.pages.length) p = this.currentStep.pages.length;
-      this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`)
+      if (!this.isCorrect) return;
+      this.selectedChoice = null;
+      let p = this.currentPageId + 1;
+      if (p <= this.currentStep.pages.length)
+        this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`);
+      else if (this.isLastPage)
+        this.$router.push(`/c/${this.contentId}`);
+      else
+        throw new Error("page not found");
     },
     selectChoice(i) {
-      console.log("@@@selectChoice: ",i);
       this.selectedChoice = i;
     },
   },
@@ -131,6 +145,7 @@ export default {
   border-radius: 8px;
   background-color:#F7F9F7;
   color: #222222;
+  cursor: pointer;
 }
 .choice.selected {
   background-color:#70AD47;
@@ -167,6 +182,7 @@ export default {
   height: 100%;
   border: 1px solid #E2F0D9;
   margin-right: 4px;
+  cursor: pointer;
 }
 .previous_icon {
   height: 100%;
@@ -177,6 +193,12 @@ export default {
   border: 1px solid #70AD47;
   background-color: #70AD47;
   color: #FFFFFF;
+  cursor: pointer;
+}
+.next.disable {
+  border: 1px solid #999999;
+  background-color: #999999;
+  color: #CCCCCC;
 }
 .next_text {
   width: 70%;
