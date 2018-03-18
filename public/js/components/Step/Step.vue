@@ -7,7 +7,8 @@
       {{description}}
     </div>
     <div class="footer">
-      <div class="question" :class="{expanded: expanded}" @click="toggleExpanded">
+      <FAQ class="faq"/>
+      <!-- <div class="question" :class="{expanded: expanded}" @click="toggleExpanded">
         <img class="question_icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/girl.png" alt="girl">
         <div class="question_content">
           <p class="question_title">なんで2のつぎが13なの？</p>
@@ -17,7 +18,7 @@
           </ul>
           <div class="question_dots">・ ・ ・ ・ ・ ・ ・ ・</div>
         </div>
-      </div>
+      </div> -->
       <div class="buttons">
         <div class="previous" @click="previous">
           <div class="previous_icon cmn_center_content">
@@ -37,11 +38,13 @@
 
 <script>
 import CONTENT from '../../data/content';
+import FAQ from './FAQ.vue';
 export default {
+  components: {
+    FAQ,
+  },
   data() {
-    return {
-      expanded: false,
-    }
+    return {}
   },
   computed: {
     contentId() {
@@ -78,12 +81,8 @@ export default {
       if (p > this.step.pages.length) p = this.step.pages.length;
       this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`)
     },
-    toggleExpanded() {
-      this.expanded = !this.expanded;
-    }
   },
-  created() {
-  },
+  created() {},
 }
 </script>
 
@@ -111,41 +110,9 @@ export default {
   bottom: 0;
   width: 100vw;
 }
-.question {
-  display: flex;
-  height: 72px;
-  transition: height .5s;
+.faq {
+  width: calc(100vw - 24px);
   margin: 12px 12px 12px 12px;
-  padding: 4px 4px 4px 4px;
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.question:before {
-  content: "";
-  position: absolute;
-  bottom: 112px;
-  left: calc(100% - 16px);
-  border: 8px solid transparent;
-  border-left: 8px solid #FFFFFF;
-  border-bottom: 8px solid #FFFFFF;
-}
-.question.expanded {
-  height: 200px;
-}
-.question_icon {
-  height: 64px;
-}
-.question_content {
-  margin: 12px 12px 12px 12px;
-}
-.question_title {
-  margin: 0 0 8px 0;
-  text-decoration: underline;
-}
-.question_dots {
-  /**/
 }
 .buttons {
   display: flex;
