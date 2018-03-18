@@ -17,6 +17,7 @@ a {
   justify-content: center;
 }
 .cmn_underline {
-  display: inline-block;
-  box-shadow: 0 -10px 0 -4px #FEFC00 inset;
+  background: linear-gradient(transparent 65%, #FEFC00 0%);
+  display: inline;
+  padding: 0 4px 0 4px;
 }
