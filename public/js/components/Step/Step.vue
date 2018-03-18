@@ -1,10 +1,25 @@
 <template>
   <div class="container">
-    <div class="media cmn_center_content">
-      <img class="image" :src="image_url" alt="image">
+    <div class="media">
+      <div class="title" v-if="currentPage.title">
+        {{currentPage.title}}
+      </div>
+      <div class="image_wrapper cmn_center_content">
+        <img class="image" :src="currentPage.image_url" alt="image">
+      </div>
     </div>
-    <div class="description">
-      {{description}}
+    <div class="main">
+      <div class="text" v-if="currentPage.text">
+        {{currentPage.text}}
+      </div>
+      <div class="choices" v-if="currentPage.choices">
+        <div class="choice" :class="{'selected': selectedChoice === i}" v-for="(choice, i) in currentPage.choices" @click="selectChoice(i)" v-bind:key="i">
+          <div class="choice_num cmn_center_content">{{i+1}}</div>
+          <div class="choice_text">
+            {{choice}}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="footer">
       <FAQ class="faq"/>
@@ -33,7 +48,9 @@ export default {
     FAQ,
   },
   data() {
-    return {}
+    return {
+      selectedChoice: '',
+    }
   },
   computed: {
     contentId() {
@@ -42,33 +59,33 @@ export default {
     stepId() {
       return this.$route.params.stepId;
     },
-    step() {
+    currentStep() {
       return CONTENT[this.contentId].steps[this.stepId];
     },
-    currentPage() {
+    currentPageId() {
       return this.$route.params.page || 1;
     },
-    image_url() {
-      let url = '';
-      if (this.step.pages[this.currentPage - 1].image) {
-        url = `https://s3-ap-northeast-1.amazonaws.com/wakarimi/content/${this.contentId}/step/${this.stepId}/${this.step.pages[this.currentPage - 1].image}`;
-      }
-      return url;
-    },
-    description() {
-      return this.step.pages[this.currentPage - 1].text;
+    currentPage() {
+      const page = this.currentStep.pages[this.currentPageId - 1];
+      if (page.image)
+        page.image_url = `https://s3-ap-northeast-1.amazonaws.com/wakarimi/content/${this.contentId}/step/${this.stepId}/${page.image}`
+      return page;
     },
   },
   methods: {
     previous() {
-      let p = Number(this.currentPage) - 1;
+      let p = Number(this.currentPageId) - 1;
       if (p < 1) p = 1;
       this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`)
     },
     next() {
-      let p = Number(this.currentPage) + 1;
-      if (p > this.step.pages.length) p = this.step.pages.length;
+      let p = Number(this.currentPageId) + 1;
+      if (p > this.currentStep.pages.length) p = this.currentStep.pages.length;
       this.$router.push(`/c/${this.contentId}/s/${this.stepId}/p/${p}`)
+    },
+    selectChoice(i) {
+      console.log("@@@selectChoice: ",i);
+      this.selectedChoice = i;
     },
   },
   created() {},
@@ -80,19 +97,53 @@ export default {
   width: 100vw;
   height: calc(100vh - 48px);
 }
+.title {
+  position: absolute;
+  font-size: 20px;
+  padding: 8px 0 16px 8px;
+}
 .media {
   height: calc((100vh - 48px) * 0.4);
+}
+.image_wrapper {
+  height: 100%;
 }
 .image {
   max-width: 100%;
   max-height: 100%;
 }
-.description {
+.main {
   height: calc((100vh - 48px) * 0.6);
   background-color: #E2F0D9;
+}
+.text {
   font-size: 20px;
   line-height: 32px;
   padding: 8px 8px 8px 8px;
+}
+.choices {
+  padding: 8px 8px 8px 8px;
+}
+.choice {
+  display: flex;
+  margin: 0 0 4px 0;
+  padding: 8px 12px 8px 12px;
+  border-radius: 8px;
+  background-color:#F7F9F7;
+  color: #222222;
+}
+.choice.selected {
+  background-color:#70AD47;
+  color: #FFFFFF;
+}
+.choice_num {
+  width: 16px;
+  height: 16px;
+  border: 1px solid;
+  border-radius: 50%;
+}
+.choice_text {
+  margin: 0 0 0 16px;
 }
 .footer {
   position: fixed;
