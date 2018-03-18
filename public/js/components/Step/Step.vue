@@ -8,17 +8,6 @@
     </div>
     <div class="footer">
       <FAQ class="faq"/>
-      <!-- <div class="question" :class="{expanded: expanded}" @click="toggleExpanded">
-        <img class="question_icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/girl.png" alt="girl">
-        <div class="question_content">
-          <p class="question_title">なんで2のつぎが13なの？</p>
-          <ul v-if="expanded">
-            <li>3〜12はあんまテストに出ないので、飛ばしてしまいます。</li>
-            <li>テストが始まったら、問題を解く前に余白に上の表をメモしておきましょう。その後の問題が解きやすくなります！</li>
-          </ul>
-          <div class="question_dots">・ ・ ・ ・ ・ ・ ・ ・</div>
-        </div>
-      </div> -->
       <div class="buttons">
         <div class="previous" @click="previous">
           <div class="previous_icon cmn_center_content">
