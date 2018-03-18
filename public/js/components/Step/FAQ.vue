@@ -4,7 +4,9 @@
       <img class="icon" src="https://s3-ap-northeast-1.amazonaws.com/wakarimi/icon/girl.png" alt="student">
       <div class="min_content">
         <p class="title">なんで2のつぎが13なの？</p>
-        <div class="dots">・ ・ ・ ・ ・ ・ ・ ・</div>
+        <div class="dots">
+          <span v-for="(item, i) in new Array(8)" v-bind:key="i" :class="{'selected': selectedIndex === i}">・</span>
+        </div>
       </div>
     </div>
     <ul class="expansion" v-if="expanded">
@@ -19,6 +21,7 @@ export default {
   data() {
     return {
       expanded: false,
+      selectedIndex: 0,
     }
   },
   methods: {
@@ -68,6 +71,13 @@ export default {
 }
 .dots {
   text-align: center;
+}
+.dots span {
+  margin: 0 4px 0 0;
+  color: #BFBFBF;
+}
+.dots span.selected {
+  color: #000000;
 }
 .expansion li{
   list-style-position: inside;
