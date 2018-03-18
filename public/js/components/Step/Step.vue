@@ -12,14 +12,11 @@
       <div class="text" v-if="currentPage.text">
         {{currentPage.text}}
       </div>
-      <div class="choices" v-if="currentPage.choices">
-        <div class="choice" :class="{'selected': selectedChoice === i}" v-for="(choice, i) in currentPage.choices" @click="selectChoice(i)" v-bind:key="i">
-          <div class="choice_num cmn_center_content">{{i+1}}</div>
-          <div class="choice_text">
-            {{choice}}
-          </div>
-        </div>
-      </div>
+      <ChoiceButtons v-if="currentPage.choices"
+        :choices="currentPage.choices"
+        :selectedChoice="selectedChoice"
+        @selectChoice="selectChoice"
+        />
     </div>
     <div class="footer">
       <FAQ class="faq"/>
@@ -42,9 +39,11 @@
 
 <script>
 import CONTENT from '../../data/content';
+import ChoiceButtons from './ChoiceButtons.vue';
 import FAQ from './FAQ.vue';
 export default {
   components: {
+    ChoiceButtons,
     FAQ,
   },
   data() {
@@ -134,31 +133,6 @@ export default {
   font-size: 20px;
   line-height: 32px;
   padding: 8px 8px 8px 8px;
-}
-.choices {
-  padding: 8px 8px 8px 8px;
-}
-.choice {
-  display: flex;
-  margin: 0 0 4px 0;
-  padding: 8px 12px 8px 12px;
-  border-radius: 8px;
-  background-color:#F7F9F7;
-  color: #222222;
-  cursor: pointer;
-}
-.choice.selected {
-  background-color:#70AD47;
-  color: #FFFFFF;
-}
-.choice_num {
-  width: 16px;
-  height: 16px;
-  border: 1px solid;
-  border-radius: 50%;
-}
-.choice_text {
-  margin: 0 0 0 16px;
 }
 .footer {
   position: fixed;
