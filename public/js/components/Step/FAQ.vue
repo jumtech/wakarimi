@@ -36,12 +36,13 @@ export default {
 
 <style scoped>
 .container {
-  height: 72px;
+  height: 56px;
   transition: height .5s;
   padding: 4px 4px 4px 4px;
   background-color: #FFFFFF;
   border-radius: 16px;
   overflow: hidden;
+  font-size: 12px;
   cursor: pointer;
 }
 .container:before {
@@ -54,19 +55,21 @@ export default {
   border-bottom: 8px solid #FFFFFF;
 }
 .container.expanded {
-  height: 240px;
+  height: 200px;
 }
 .min {
   display: flex;
 }
 .icon {
-  height: 64px;
+  height: 48px;
 }
 .min_content {
-  margin: 12px 12px 12px 12px;
+  width: 100%;
+  margin: 8px 0 0 0;
 }
 .title {
   margin: 0 0 8px 0;
+  text-align: center;
   text-decoration: underline;
 }
 .dots {
