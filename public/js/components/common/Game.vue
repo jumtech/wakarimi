@@ -8,7 +8,6 @@ import games from '../games';
 export default {
   props: ['gameName'],
   created() {
-    console.log("p5:",p5)
     const sample = new p5(games[this.gameName], 'game');
   }
 }
